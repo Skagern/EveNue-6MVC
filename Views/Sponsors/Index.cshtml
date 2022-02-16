@@ -1,0 +1,16 @@
+﻿@model List<GruppNrSexMVC.Models.Sponsor>
+
+<table>
+    @foreach (var item in Model)
+            {
+    <tr>
+        <td>@Html.DisplayFor(m => item.Id)</td>
+        <td>@Html.DisplayFor(m => item.Name)</td>
+        <td>@Html.DisplayFor(m => item.Description)</td>
+        <td>@Html.DisplayFor(m => item.URL)</td>
+        <td>@Html.DisplayFor(m => item.Email)</td>
+        <td>@Html.DisplayFor(m => item.Image)</td>
+
+    </tr>
+            }
+</table>
