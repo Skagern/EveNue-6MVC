@@ -1,0 +1,55 @@
+﻿nav {
+    background-image: linear-gradient(to right, #303076ff, #d36716ff);
+}
+
+.navbar-brand {
+    width: 80px;
+}
+
+.nav-link {
+    color: white;
+}
+
+    .nav-link:hover {
+        color: black;
+    }
+
+.pb-3 {
+    margin-top: 120px;
+}
+
+body {
+    height: 100%;
+}
+
+footer {
+    background-image: linear-gradient(to right, #303076ff, #d36716ff);
+}
+
+.card-img-top {
+    height: 225px;
+    width: 100%;
+    display: block;
+}
+
+img.d-block.w-100 {
+    background-color: darkgray;
+    height: 400px;
+}
+
+.form-signin {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.btn-secondary {
+    background-color: #7B7BAB;
+    border: none;
+}
+
+    .btn-secondary:hover {
+        background-color: #303076ff;
+        border: none;
+    }
