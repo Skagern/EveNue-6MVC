@@ -15,7 +15,7 @@ namespace GruppNrSexMVC.Controllers
         {
             List<Sponsor> Sponsorer = new List<Sponsor>();
             HttpClient client = new HttpClient();
-            var response = await client.GetAsync("http://localhost:64409/api/Sponsors");
+            var response = await client.GetAsync("http://193.10.202.76/SponsorsAPI/api/Sponsors");
             string jsonresponse = await response.Content.ReadAsStringAsync();
             Sponsorer = JsonConvert.DeserializeObject<List<Sponsor>>(jsonresponse);
 
