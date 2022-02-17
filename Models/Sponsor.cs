@@ -12,6 +12,6 @@ namespace GruppNrSexMVC.Models
         public string Description { get; set; }
         public string URL { get; set; }
         public string Email { get; set; }
-        public byte[] Image { get; set; }
+        public string Image { get; set; }
     }
 }

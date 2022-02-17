@@ -3,17 +3,34 @@
 <table>
     @foreach (var item in Model)
     {
-        <tr>
-            <td>@Html.DisplayFor(m => item.Image)</td>
+       
+     <tbody style="display: inline-grid; width: 60%; background-color: lightgray; margin-bottom: 25px;">
+            <tr>
+                <td>
 
-            <td>@Html.DisplayFor(m => item.Name)</td>
+                    @{var imgSrc = string.Format("data:image/jpg;base64,{0}", item.Image);}
+                    <img src="@imgSrc" style="height: 225px; width: 100%; border-top-left-radius: calc(.25rem - 1px); border-top-right-radius: calc(.25rem - 1px); border-style:solid; border-width:1px;" /> <!--Into Class SponsImg-->
 
-            <td>@Html.DisplayFor(m => item.Description)</td>
-
-            <td>@Html.DisplayFor(m => item.URL)</td>
-            <td>@Html.DisplayFor(m => item.Email)</td>
-            
-
-        </tr>
+                </td>
+            </tr>
+            <tr style="font">
+                <!--Into Class SponsName-->
+                <td><h2>@Html.DisplayFor(m => item.Name)</h2></td>
+            </tr>
+            <tr style="">
+                <!--Into Class SponsDesc-->>
+                <td><p>@Html.DisplayFor(m => item.Description)</p></td>
+            </tr>
+            <tr style="">
+                <!--Into Class SponsContact-->>
+                <td><h5>@Html.DisplayFor(m => item.URL)</h5></td>  
+            </tr>
+            <tr>
+                style="">
+                <!--Into Class SponsContact-->>
+                <td><h5>@Html.DisplayFor(m => item.Email)</h5></td>
+            </tr>
+     </tbody>
     }
+
 </table>
