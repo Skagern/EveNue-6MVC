@@ -1,36 +1,54 @@
 ﻿@model List<GruppNrSexMVC.Models.Sponsor>
 
-<table>
-    @foreach (var item in Model)
-    {
-       
-     <tbody style="display: inline-grid; width: 60%; background-color: lightgray; margin-bottom: 25px;">
-            <tr>
-                <td>
+@{
+    ViewData["Title"] = "Sponsor Page";
+}
 
-                    @{var imgSrc = string.Format("data:image/jpg;base64,{0}", item.Image);}
-                    <img src="@imgSrc" style="height: 225px; width: 100%; border-top-left-radius: calc(.25rem - 1px); border-top-right-radius: calc(.25rem - 1px); border-style:solid; border-width:1px;" /> <!--Into Class SponsImg-->
+<div class="pd-3 container" role="main">
+    <table>
+        @foreach (var item in Model)
+        {
 
-                </td>
-            </tr>
-            <tr style="font">
-                <!--Into Class SponsName-->
-                <td><h2>@Html.DisplayFor(m => item.Name)</h2></td>
-            </tr>
-            <tr style="">
-                <!--Into Class SponsDesc-->>
-                <td><p>@Html.DisplayFor(m => item.Description)</p></td>
-            </tr>
-            <tr style="">
-                <!--Into Class SponsContact-->>
-                <td><h5>@Html.DisplayFor(m => item.URL)</h5></td>  
-            </tr>
-            <tr>
-                style="">
-                <!--Into Class SponsContact-->>
-                <td><h5>@Html.DisplayFor(m => item.Email)</h5></td>
-            </tr>
-     </tbody>
-    }
+            <tbody style="display: inline-grid;
+                   width: 60%;
+                   background-color: rgba(82, 82, 82, 0.12);
+                   margin-bottom: 25px;
+                   padding: 1px;
+                   border-radius: calc(.25rem - 1px);
+                   text-align:center;">
 
-</table>
+                <!--Into Class SponsTable-->
+                <tr>
+                    <td>
+
+                        @{var imgSrc = string.Format("data:image/jpg;base64,{0}", item.Image);}
+                        <img src="@imgSrc"
+                             style="height: 225px;
+                                width: 100%;
+                                border-radius: calc(.25rem - 1px);
+                                border-style:solid;
+                                border-width:1px;" /> <!--Into Class SponsImg-->
+
+                    </td>
+                </tr>
+                <tr>
+                    <!--Into Class SponsName-->
+                    <td><h2>@Html.DisplayFor(m => item.Name)</h2></td>
+                </tr>
+                <tr>
+                    <!--Into Class SponsDesc-->
+                    <td><p>@Html.DisplayFor(m => item.Description)</p></td>
+                </tr>
+                <tr>
+                    <!--Into Class SponsContact-->
+                    <td><h5>Besök: <i><a href="http://@item.URL">@Html.DisplayFor(m => item.URL)</a></i></h5></td>
+                </tr>
+                <tr>
+                    <!--Into Class SponsContact-->
+                    <td><h5>Kontakt: <i>@Html.DisplayFor(m => item.Email)</i></h5></td>
+                </tr>
+            </tbody>
+        }
+
+    </table>
+</div>
