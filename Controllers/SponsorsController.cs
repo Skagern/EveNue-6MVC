@@ -21,5 +21,6 @@ namespace GruppNrSexMVC.Controllers
 
             return View(Sponsorer);
         }
+        
     }
 }
