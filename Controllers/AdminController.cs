@@ -33,23 +33,6 @@ namespace GruppNrSexMVC.Controllers
             //return View(await _context.Sponsors.ToListAsync());
         }
 
-        // GET: Admin/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var sponsor = await _context.Sponsors
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (sponsor == null)
-            {
-                return NotFound();
-            }
-
-            return View(sponsor);
-        }
 
         // GET: Admin/Create
         public IActionResult Create()
@@ -66,6 +49,8 @@ namespace GruppNrSexMVC.Controllers
         {
             if (ModelState.IsValid)
             {
+                //Image kommer hit som NULL - Behöver konverteras innan det kommer hit!
+                //Dessutom är nog dessa rader fel då vi skall kontakta API och inte updatera en databas direkt som vi gör här. 
                 _context.Add(sponsor);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
