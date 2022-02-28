@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using GruppNrSexMVC.Models;
 using System.Net.Http;
 using Newtonsoft.Json;
+using System.Net.Http.Json;
 
 namespace GruppNrSexMVC.Controllers
 {
@@ -42,22 +43,43 @@ namespace GruppNrSexMVC.Controllers
         }
 
         // POST: Admin/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Description,URL,Email,Image")] Sponsor sponsor)
+
+        //EJ TESTAD
+        public ActionResult Create(Sponsor sponsor)
         {
-            if (ModelState.IsValid)
+            using (var client = new HttpClient())
             {
-                //Image kommer hit som NULL - Behöver konverteras innan det kommer hit!
-                //Dessutom är nog dessa rader fel då vi skall kontakta API och inte updatera en databas direkt som vi gör här. 
-                _context.Add(sponsor);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                client.BaseAddress = new Uri("http://193.10.202.76/SponsorsAPI/api/Sponsors");
+                var posttask = client.PostAsJsonAsync<Sponsor>("Sponsor", sponsor);
+                posttask.Wait();
+
+                var result = posttask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index");   
+                }
+
             }
+
+            ModelState.AddModelError(string.Empty, "Server Error. Please contact administrator.");
+
             return View(sponsor);
         }
+
+        //public async Task<IActionResult> Create([Bind("Id,Name,Description,URL,Email,Image")] Sponsor sponsor)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        //Image kommer hit som NULL - Behöver konverteras innan det kommer hit!
+        //        //Dessutom är nog dessa rader fel då vi skall kontakta API och inte updatera en databas direkt som vi gör här. 
+        //        _context.Add(sponsor);
+        //        await _context.SaveChangesAsync();
+        //        return RedirectToAction(nameof(Index));
+        //    }
+        //    return View(sponsor);
+        //}
 
         // GET: Admin/Edit/5
         public async Task<IActionResult> Edit(int? id)
