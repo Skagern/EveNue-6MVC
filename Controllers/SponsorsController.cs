@@ -11,6 +11,7 @@ namespace GruppNrSexMVC.Controllers
 {
     public class SponsorsController : Controller
     {
+        
         public async Task<IActionResult> Index()
         {
             List<Sponsor> Sponsorer = new List<Sponsor>();

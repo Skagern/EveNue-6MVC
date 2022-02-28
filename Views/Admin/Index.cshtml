@@ -52,8 +52,10 @@
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
             <td>
-                @{var imgSrc = string.Format("data:image/jpg;base64,{0}", item.Image);}
-                <img src="@imgSrc"
+              
+                  
+
+                <img src="data:image;base64,@System.Convert.ToBase64String(item.Image)"
                      style="height: 225px;
                                 width: 100%;
                                 border-radius: calc(.25rem - 1px);

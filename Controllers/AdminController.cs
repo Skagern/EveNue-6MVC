@@ -29,6 +29,7 @@ namespace GruppNrSexMVC.Controllers
             string jsonresponse = await response.Content.ReadAsStringAsync();
             Sponsorer = JsonConvert.DeserializeObject<List<Sponsor>>(jsonresponse);
 
+
             return View(Sponsorer);
             //return View(await _context.Sponsors.ToListAsync());
         }
@@ -67,11 +68,14 @@ namespace GruppNrSexMVC.Controllers
             }
 
             var sponsor = await _context.Sponsors.FindAsync(id);
+            byte[] img = sponsor.Image;
+            
             if (sponsor == null)
             {
                 return NotFound();
             }
             return View(sponsor);
+
         }
 
         // POST: Admin/Edit/5
