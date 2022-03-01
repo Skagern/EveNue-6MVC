@@ -21,20 +21,35 @@ namespace GruppNrSexMVC.Controllers
             _context = context;
         }
 
+        public async Task<int>GetHighestID()
+        {
+            int Highest = 0;
+            List<Sponsor> SponsorList = new List<Sponsor>();
+            HttpClient client = new HttpClient();
+
+            var response = await client.GetAsync("http://193.10.202.76/SponsorsAPI/api/Sponsors");
+            string jsonresponse = await response.Content.ReadAsStringAsync();
+            SponsorList = JsonConvert.DeserializeObject<List<Sponsor>>(jsonresponse);
+
+            var HighIdVar = SponsorList.Max(s => s.Id);
+
+            Highest = HighIdVar;
+
+            return await Task.FromResult(result: Highest);
+        }
+
         // GET: Admin
         public async Task<IActionResult> Index()
         {
-            List<Sponsor> Sponsorer = new List<Sponsor>();
+            List<Sponsor> SponsorList = new List<Sponsor>();
             HttpClient client = new HttpClient();
             var response = await client.GetAsync("http://193.10.202.76/SponsorsAPI/api/Sponsors");
             string jsonresponse = await response.Content.ReadAsStringAsync();
-            Sponsorer = JsonConvert.DeserializeObject<List<Sponsor>>(jsonresponse);
+            SponsorList = JsonConvert.DeserializeObject<List<Sponsor>>(jsonresponse);
 
-
-            return View(Sponsorer);
-            //return View(await _context.Sponsors.ToListAsync());
+            return View(SponsorList);
+            
         }
-
 
         // GET: Admin/Create
         public IActionResult Create()
@@ -46,41 +61,32 @@ namespace GruppNrSexMVC.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
 
-        //EJ TESTAD
-        public ActionResult Create(Sponsor sponsor)
+        public IActionResult Create(Sponsor sponsorinfo)
         {
+
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("http://193.10.202.76/SponsorsAPI/api/Sponsors");
-                var posttask = client.PostAsJsonAsync<Sponsor>("Sponsors", sponsor);
+                var posttask = client.PostAsJsonAsync<Sponsor>("Sponsors", sponsorinfo);
                 posttask.Wait();
 
                 var result = posttask.Result;
-                byte[] img = sponsor.Image;
                 if (result.IsSuccessStatusCode)
                 {
-                    return RedirectToAction("Index");   
+
+                    int HighestID = GetHighestID();
+
+                    return RedirectToAction("AddImage");
                 }
 
             }
 
             ModelState.AddModelError(string.Empty, "Server Error. Please contact administrator.");
 
-            return View(sponsor);
+            return View(sponsorinfo);
         }
 
-        //public async Task<IActionResult> Create([Bind("Id,Name,Description,URL,Email,Image")] Sponsor sponsor)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        //Image kommer hit som NULL - Behöver konverteras innan det kommer hit!
-        //        //Dessutom är nog dessa rader fel då vi skall kontakta API och inte updatera en databas direkt som vi gör här. 
-        //        _context.Add(sponsor);
-        //        await _context.SaveChangesAsync();
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    return View(sponsor);
-        //}
+        
 
         // GET: Admin/Edit/5
         public async Task<IActionResult> Edit(int? id)

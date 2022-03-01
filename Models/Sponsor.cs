@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,4 +15,10 @@ namespace GruppNrSexMVC.Models
         public string Email { get; set; }
         public byte[] Image { get; set; }
     }
+
+    public class SponsorImageModel
+    {
+        public IFormFile Image { get; set; }
+    }
+
 }
