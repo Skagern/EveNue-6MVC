@@ -52,15 +52,26 @@
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
             <td>
-              
-                  
 
-                <img src="data:image;base64,@System.Convert.ToBase64String(item.Image)"
-                     style="height: 225px;
+                @if (item.Image != null)
+                { 
+                    <img src="data:image;base64,@System.Convert.ToBase64String(item.Image)"
+                         style="height: 225px;
                                 width: 100%;
                                 border-radius: calc(.25rem - 1px);
                                 border-style:solid;
                                 border-width:1px;" />
+                }
+                else
+                {
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg" 
+                         style="height: 225px;
+                                width: 100%;
+                                border-radius: calc(.25rem - 1px);
+                                border-style:solid;
+                                border-width:1px;" />
+                }
+
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

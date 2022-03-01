@@ -52,10 +52,11 @@ namespace GruppNrSexMVC.Controllers
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("http://193.10.202.76/SponsorsAPI/api/Sponsors");
-                var posttask = client.PostAsJsonAsync<Sponsor>("Sponsor", sponsor);
+                var posttask = client.PostAsJsonAsync<Sponsor>("Sponsors", sponsor);
                 posttask.Wait();
 
                 var result = posttask.Result;
+                byte[] img = sponsor.Image;
                 if (result.IsSuccessStatusCode)
                 {
                     return RedirectToAction("Index");   
