@@ -35,7 +35,7 @@ namespace GruppNrSexMVC.Controllers
 
             Highest = HighIdVar; 
 
-            return await Task.FromResult(Highest); //ID IS CORRECT : Recived info is not
+            return Highest; //ID IS CORRECT : Recived info is not
         }
 
         // GET: Admin
@@ -75,9 +75,9 @@ namespace GruppNrSexMVC.Controllers
                 {
 
                     var HighestIDVar = GetHighestID();
-                    int Id = HighestIDVar.Id;
+                    int Id = HighestIDVar.Result;
 
-                    return RedirectToAction(nameof(AddPicture), Id);
+                    return RedirectToAction(nameof(AddPicture), new { id = Id });
                 }
 
             }
@@ -87,22 +87,37 @@ namespace GruppNrSexMVC.Controllers
             return View(sponsorinfo);
         }
 
-        public async Task<IActionResult> AddPicture(int? id)
+        public ActionResult AddPicture(int id)
         {
-            //if (id == null)
-            //{
-            //    return NotFound();
-            //}
+            return View(id);
+        }
 
-            var sponsor = await _context.Sponsors.FindAsync(id); //Fel ID NR
-            //byte[] img = sponsor.Image;
 
-            //if (sponsor == null)
-            //{
-            //    return NotFound();
-            //}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddPicture(Sponsor sponsor)
+        {
+            
+            
+            
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:64189/api/student");
+
+                //HTTP POST
+                var putTask = client.PutAsJsonAsync<Sponsor>("Sponsors", sponsor);
+                putTask.Wait();
+
+                var result = putTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+
+                    return RedirectToAction("Index");
+                }
+            }
             return View(sponsor);
         }
+
 
         // GET: Admin/Edit/5
         public async Task<IActionResult> Edit(int? id)

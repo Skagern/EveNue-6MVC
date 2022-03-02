@@ -1,4 +1,4 @@
-﻿@model GruppNrSexMVC.Models.Sponsor
+﻿@model GruppNrSexMVC.Models.SponsorImageModel
 
 @{
     ViewData["Title"] = "AddPicture";
@@ -7,7 +7,7 @@
 
 <h1>Lägg till:</h1>
 
-<h4>Sponsor Bild</h4>
+<h4>Sponsorbild</h4>
 <hr />
 
 @using (Html.BeginForm("AddPicture", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -18,7 +18,7 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-               @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
+               @Html.LabelFor(model => model.ImageFile, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     <input type="file" name="ImageFile" value="Upload"  class="form-control"/>
                 </div>
