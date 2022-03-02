@@ -21,9 +21,9 @@ namespace GruppNrSexMVC.Controllers
             _context = context;
         }
 
-        public async Task<int>GetHighestID()
+        public async Task<int> GetHighestID()
         {
-            int Highest = 0;
+            int Highest;
             List<Sponsor> SponsorList = new List<Sponsor>();
             HttpClient client = new HttpClient();
 
@@ -33,9 +33,9 @@ namespace GruppNrSexMVC.Controllers
 
             var HighIdVar = SponsorList.Max(s => s.Id);
 
-            Highest = HighIdVar;
+            Highest = HighIdVar; 
 
-            return await Task.FromResult(result: Highest);
+            return await Task.FromResult(Highest); //ID IS CORRECT : Recived info is not
         }
 
         // GET: Admin
@@ -74,9 +74,10 @@ namespace GruppNrSexMVC.Controllers
                 if (result.IsSuccessStatusCode)
                 {
 
-                    int HighestID = GetHighestID();
+                    var HighestIDVar = GetHighestID();
+                    int Id = HighestIDVar.Id;
 
-                    return RedirectToAction("AddImage");
+                    return RedirectToAction(nameof(AddPicture), Id);
                 }
 
             }
@@ -86,7 +87,22 @@ namespace GruppNrSexMVC.Controllers
             return View(sponsorinfo);
         }
 
-        
+        public async Task<IActionResult> AddPicture(int? id)
+        {
+            //if (id == null)
+            //{
+            //    return NotFound();
+            //}
+
+            var sponsor = await _context.Sponsors.FindAsync(id); //Fel ID NR
+            //byte[] img = sponsor.Image;
+
+            //if (sponsor == null)
+            //{
+            //    return NotFound();
+            //}
+            return View(sponsor);
+        }
 
         // GET: Admin/Edit/5
         public async Task<IActionResult> Edit(int? id)
