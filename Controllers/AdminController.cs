@@ -10,6 +10,7 @@ using System.Net.Http;
 using Newtonsoft.Json;
 using System.Net.Http.Json;
 using System.IO;
+using System.Text;
 
 namespace GruppNrSexMVC.Controllers
 {
@@ -97,28 +98,31 @@ namespace GruppNrSexMVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AddPicture(SponsorImageModel sponsorimage)
+        public ActionResult AddPicture(SponsorImageModel sponsorimage, Sponsor sponsor)
         {
-            
-            foreach (var file in sponsorimage.ImageFile) //WHAT IS FILE?
+
+           
+            if (sponsorimage.ImageFile != null)
             {
-                if (file.Length > 0)
+                using (var ms = new MemoryStream())
                 {
-                    using (var ms = new MemoryStream())
-                    {
-                        file.CopyTo(ms);
+                        sponsorimage.ImageFile.CopyTo(ms);
                         var fileBytes = ms.ToArray();
                         string s = Convert.ToBase64String(fileBytes);
                         // act on the Base64 data
-                    }
+
+                        byte[] img = Encoding.ASCII.GetBytes(s);
+                        sponsor.Image = img;
+                        sponsor.Id = sponsorimage.Id;
                 }
             }
+        
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("http://localhost:64189/api/student");
 
                 //HTTP POST
-                var putTask = client.PutAsJsonAsync<SponsorImageModel>("Sponsors", sponsorimage);
+                var putTask = client.PutAsJsonAsync<Sponsor>("Sponsors", sponsor);
                 putTask.Wait();
 
                 var result = putTask.Result;
