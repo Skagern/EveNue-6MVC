@@ -9,6 +9,7 @@ using GruppNrSexMVC.Models;
 using System.Net.Http;
 using Newtonsoft.Json;
 using System.Net.Http.Json;
+using System.IO;
 
 namespace GruppNrSexMVC.Controllers
 {
@@ -87,25 +88,37 @@ namespace GruppNrSexMVC.Controllers
             return View(sponsorinfo);
         }
 
-        public ActionResult AddPicture(int id)
+        public ActionResult AddPicture(int id, SponsorImageModel sponsorImage)
         {
-            return View(id);
+            sponsorImage.Id = id;
+            return View(sponsorImage);
         }
 
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AddPicture(Sponsor sponsor)
+        public ActionResult AddPicture(SponsorImageModel sponsorimage)
         {
             
-            
-            
+            foreach (var file in sponsorimage.ImageFile) //WHAT IS FILE?
+            {
+                if (file.Length > 0)
+                {
+                    using (var ms = new MemoryStream())
+                    {
+                        file.CopyTo(ms);
+                        var fileBytes = ms.ToArray();
+                        string s = Convert.ToBase64String(fileBytes);
+                        // act on the Base64 data
+                    }
+                }
+            }
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("http://localhost:64189/api/student");
 
                 //HTTP POST
-                var putTask = client.PutAsJsonAsync<Sponsor>("Sponsors", sponsor);
+                var putTask = client.PutAsJsonAsync<SponsorImageModel>("Sponsors", sponsorimage);
                 putTask.Wait();
 
                 var result = putTask.Result;
@@ -115,7 +128,7 @@ namespace GruppNrSexMVC.Controllers
                     return RedirectToAction("Index");
                 }
             }
-            return View(sponsor);
+            return View(sponsorimage);
         }
 
 

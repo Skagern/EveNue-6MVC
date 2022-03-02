@@ -18,9 +18,8 @@ namespace GruppNrSexMVC.Models
 
     public class SponsorImageModel
     {
-        public IFormFile ImageFile { get; set; }
         public int Id { get; set; }
-       
+        public IFormFile ImageFile { get; set; }
     }
 
 }
