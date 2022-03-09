@@ -9,6 +9,7 @@ using GruppNrSexMVC.Models;
 using System.Net.Http;
 using Newtonsoft.Json;
 using System.Net.Http.Json;
+using GruppNrSexAPI.Models;
 
 namespace GruppNrSexMVC.Controllers
 {
@@ -47,16 +48,21 @@ namespace GruppNrSexMVC.Controllers
         [ValidateAntiForgeryToken]
 
         //EJ TESTAD
-        public ActionResult Create(Sponsor sponsor)
+        public async Task <IActionResult> Create(Sponsor sponsor)
         {
             using (var client = new HttpClient())
             {
+                using (var memoryStream = new System.IO.MemoryStream())
+                {
+                   await sponsor.UppladdadBild.CopyToAsync(memoryStream);
+                    sponsor.Image = memoryStream.ToArray();
+                }
+
                 client.BaseAddress = new Uri("http://193.10.202.76/SponsorsAPI/api/Sponsors");
                 var posttask = client.PostAsJsonAsync<Sponsor>("Sponsors", sponsor);
                 posttask.Wait();
 
                 var result = posttask.Result;
-                byte[] img = sponsor.Image;
                 if (result.IsSuccessStatusCode)
                 {
                     return RedirectToAction("Index");   
@@ -85,18 +91,19 @@ namespace GruppNrSexMVC.Controllers
         // GET: Admin/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+
             if (id == null)
             {
                 return NotFound();
             }
 
             var sponsor = await _context.Sponsors.FindAsync(id);
-            byte[] img = sponsor.Image;
-            
+
             if (sponsor == null)
             {
                 return NotFound();
             }
+           
             return View(sponsor);
 
         }
@@ -106,7 +113,7 @@ namespace GruppNrSexMVC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,URL,Email,Image")] Sponsor sponsor)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,URL,Email,Image,UppladdadBild")] Sponsor sponsor)
         {
             if (id != sponsor.Id)
             {
@@ -117,8 +124,12 @@ namespace GruppNrSexMVC.Controllers
             {
                 try
                 {
+                    using var memoryStream = new System.IO.MemoryStream();
+                    await sponsor.UppladdadBild.CopyToAsync(memoryStream);
+                    sponsor.Image = memoryStream.ToArray();
                     _context.Update(sponsor);
                     await _context.SaveChangesAsync();
+
                 }
                 catch (DbUpdateConcurrencyException)
                 {
