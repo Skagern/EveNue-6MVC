@@ -9,6 +9,7 @@ namespace GruppNrSexMVC.Models
 {
     public class SponsorContext : DbContext
     {
+        public DbSet<MailListModel> MailList { get; set; }
         public DbSet<Sponsor> Sponsors { get; set; }
         public SponsorContext(DbContextOptions options) : base(options)
         {

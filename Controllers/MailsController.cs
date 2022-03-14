@@ -8,7 +8,10 @@ using Microsoft.EntityFrameworkCore;
 using GruppNrSexMVC.Models;
 using SendGrid;
 using SendGrid.Helpers.Mail;
-using Example;
+using static GruppNrSexMVC.Models.Example;
+using System.Net.Http;
+using Newtonsoft.Json;
+
 
 namespace GruppNrSexMVC.Controllers
 {
@@ -24,7 +27,13 @@ namespace GruppNrSexMVC.Controllers
         // GET: Mails
         public async Task<IActionResult> Index()
         {
-            return View();
+            List<MailListModel> email = new List<MailListModel>();
+            HttpClient client = new HttpClient();
+            var response = await client.GetAsync("http://193.10.202.76/MailAPI/api/MailListModels");
+            string jsonresponse = await response.Content.ReadAsStringAsync();
+            email = JsonConvert.DeserializeObject<List<MailListModel>>(jsonresponse);
+
+            return View(email);
         }
 
         // GET: Mails/Details/5
@@ -153,14 +162,15 @@ namespace GruppNrSexMVC.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> SendgridEmailSubmit(EmailModel emailmodel)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Send(EmailModel emailmodel)
         {
             ViewData["Message"] = "Email Sent!!!...";
-            Mail emailexample = new Mail();
+            Example emailexample = new Example();
             await emailexample.Execute(emailmodel.To, emailmodel.Subject, emailmodel.Body
                 , emailmodel.Body);
 
-            return View("SendgridEmail");
+            return View();
         }
 
         

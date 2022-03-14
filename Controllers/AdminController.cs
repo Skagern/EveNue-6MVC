@@ -9,7 +9,6 @@ using GruppNrSexMVC.Models;
 using System.Net.Http;
 using Newtonsoft.Json;
 using System.Net.Http.Json;
-using GruppNrSexAPI.Models;
 
 namespace GruppNrSexMVC.Controllers
 {
@@ -74,19 +73,6 @@ namespace GruppNrSexMVC.Controllers
 
             return View(sponsor);
         }
-
-        //public async Task<IActionResult> Create([Bind("Id,Name,Description,URL,Email,Image")] Sponsor sponsor)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        //Image kommer hit som NULL - Behöver konverteras innan det kommer hit!
-        //        //Dessutom är nog dessa rader fel då vi skall kontakta API och inte updatera en databas direkt som vi gör här. 
-        //        _context.Add(sponsor);
-        //        await _context.SaveChangesAsync();
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    return View(sponsor);
-        //}
 
         // GET: Admin/Edit/5
         public async Task<IActionResult> Edit(int? id)
