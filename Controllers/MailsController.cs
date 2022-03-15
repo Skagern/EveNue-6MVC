@@ -161,6 +161,11 @@ namespace GruppNrSexMVC.Controllers
             return _context.MailList.Any(e => e.Id == id);
         }
 
+        public IActionResult Send()
+        {
+            return View();
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Send(EmailModel emailmodel)
@@ -173,7 +178,13 @@ namespace GruppNrSexMVC.Controllers
             return View();
         }
 
-        
+        //public bool Execute()
+        //{
+        //    Example emailexample = new Example();
+        //    emailexample.Execute().Wait();
+        //    return true;
+
+        //}
     }
 
     
