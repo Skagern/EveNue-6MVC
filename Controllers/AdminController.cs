@@ -166,5 +166,17 @@ namespace GruppNrSexMVC.Controllers
         {
             return _context.Sponsors.Any(e => e.Id == id);
         }
+        public async Task<IActionResult> Test()
+        {
+            List<Sponsor> Sponsorer = new List<Sponsor>();
+            HttpClient client = new HttpClient();
+            var response = await client.GetAsync("http://193.10.202.76/SponsorsAPI/api/Sponsors");
+            string jsonresponse = await response.Content.ReadAsStringAsync();
+            Sponsorer = JsonConvert.DeserializeObject<List<Sponsor>>(jsonresponse);
+
+
+            return View(Sponsorer);
+            //return View(await _context.Sponsors.ToListAsync());
+        }
     }
 }

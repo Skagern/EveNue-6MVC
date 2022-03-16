@@ -3,9 +3,9 @@
     ViewData["Title"] = "Send";
 }
 
-<h1>Skicka Mail:</h1>
+<h1>Send Mail:</h1>
 
-<h4>Formulär</h4>
+
 <hr />
 
 @using (Html.BeginForm("Send", "Mails", FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -43,7 +43,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Skicka Mail" class="btn btn-primary" />
+                <input type="submit" value="Send Mail" class="button-64"><span class="text"/>
             </div>
         </div>
     </div>

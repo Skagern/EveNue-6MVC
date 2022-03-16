@@ -1,0 +1,94 @@
+﻿@model IEnumerable<GruppNrSexMVC.Models.Sponsor>
+
+
+<h1>Sponsors</h1>
+
+
+
+<div class="row col-md-12">
+    @foreach (var item in Model)
+    {
+        <div class="card col-md-3">
+            <div class="card-img-top" style="padding-top:20px;">
+
+                @if (item.Image != null)
+                {
+                    <img src="data:image;base64,@System.Convert.ToBase64String(item.Image)"
+                         style="height: 225px;
+                                            width: 100%;
+                                            border-radius: calc(.25rem - 1px);
+                                            border-style:solid;
+                                            border-width:1px;" />
+                }
+                else
+                {
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg"
+                         style="height: 225px;
+                                            width: 100%;
+                                            border-radius: calc(.25rem - 1px);
+                                            border-style:solid;
+                                            border-width:1px;" />
+                }
+
+            </div>
+
+
+            <p style="margin-left:-10px; margin-top:20px">
+                <strong>
+                    Company:
+
+                </strong>
+                @Html.DisplayFor(model => item.Name)
+            </p>
+
+
+
+            <p style="margin-left:-10px">
+                <strong>
+                    Company description:
+                </strong>
+
+                @Html.DisplayFor(model => item.Description)
+            </p>
+
+
+            <p style="margin-left:-10px">
+                <strong>
+                    Website:
+                </strong>
+
+                @Html.DisplayFor(model => item.URL)
+            </p>
+
+            <p style="margin-left:-10px">
+                <strong>
+                    Email:
+                </strong>
+
+                @Html.DisplayFor(model => item.Email)
+            </p>
+
+
+
+
+            <a asp-action="Edit" asp-route-id="@item.Id"><button class="buttonCard" ><span class="text">Edit sponsor</span></button></a>
+
+            <br />
+
+
+            <a asp-action="Delete" asp-route-id="@item.Id"><button class="buttonDelete"><span class="text">Delete sponsor</span></button></a>
+        </div>
+
+
+
+    }
+
+
+
+</div>
+
+<br />
+<br />
+<br />
+<h4 style="margin-left:200px">Click the button below to create a new sponsor</h4>
+<a asp-action="Create"><button class="button-64" role="button"> <span class="text"> Create new sponsor</span> </button></a>

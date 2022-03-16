@@ -1,0 +1,191 @@
+﻿/* CSS */
+.button-64 {
+    align-items: center;
+    background-image: linear-gradient(144deg,#D36716, #303076ff 50%,#313177); /*#D36716 #313177*/
+    border: 0;
+    border-radius: 4px;
+    box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    display: flex;
+    font-family: Phantomsans, sans-serif;
+    font-size: 20px;
+    justify-content: center;
+    line-height: 1em;
+    max-width: 100%;
+    min-width: 140px;
+    padding: 3px;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    cursor: pointer;
+    margin-left: 450px;
+    margin-top: 50px;
+    outline: none;
+
+}
+
+    .button-64:active,
+    .button-64:hover {
+        text-decoration: none;
+        outline: none;
+    }
+
+    .button-64 span {
+        background-color: black;
+        padding: 16px 24px;
+        border-radius: 6px;
+        width: 100%;
+        height: 100%;
+        transition: 300ms;
+        text-decoration: none;
+    }
+
+    .button-64:hover span {
+        background: none;
+        text-decoration: none;
+        outline: none;
+    }
+
+@media (min-width: 768px) {
+    .button-64 {
+        font-size: 24px;
+        min-width: 196px;
+        text-decoration: none;
+        outline: none;
+    }
+}
+
+
+
+
+
+
+
+/* CSS */
+.buttonCard {
+    
+    bottom: 10px;
+    align-items: center;
+    background-image: linear-gradient(144deg,#3f580f, #05ae34 50%,#06d23f); /*#D36716 #313177*/
+    border: 0;
+    border-radius: 8px;
+    box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    display: flex;
+    font-family: Phantomsans, sans-serif;
+    font-size: 20px;
+    justify-content: center;
+    line-height: 1em;
+    max-width: 50%;
+    min-width: 70px;
+    padding: 3px;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    cursor: pointer;
+    align-content: center;
+}
+
+    .buttonCard:active,
+    .buttonCard:hover {
+    margin-left: 19px;
+    outline: none;
+        text-decoration: none;
+        outline: none;
+    }
+
+    .buttonCard span {
+        background-color: black;
+        padding: 16px 24px;
+        border-radius: 6px;
+        width: 100%;
+        height: 50%;
+        transition: 300ms;
+        text-decoration: none;
+    }
+
+    .buttonCard:hover span {
+        background: none;
+        text-decoration: none;
+        outline: none;
+    }
+
+@media (min-width: 334px) {
+    .buttonCard {
+        font-size: 12px;
+        min-width: 98px;
+        text-decoration: none;
+        outline: none;
+    }
+}
+
+
+
+
+
+/* CSS */
+.buttonDelete {
+    
+    bottom: 10px;
+    align-items: center;
+    background-image: linear-gradient(144deg,#4f0101, #930000 50%,#c20202); /*#D36716 #313177*/
+    border: 0;
+    border-radius: 8px;
+    box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    display: flex;
+    font-family: Phantomsans, sans-serif;
+    font-size: 20px;
+    justify-content: center;
+    line-height: 1em;
+    max-width: 50%;
+    min-width: 70px;
+    padding: 3px;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    cursor: pointer;
+    margin-left: 19px;
+    outline: none;
+    margin-bottom: 10px;
+}
+
+    .buttonDelete:active,
+    .buttonDelete:hover {
+        text-decoration: none;
+        outline: none;
+    }
+
+    .buttonDelete span {
+        background-color: black;
+        padding: 16px 24px;
+        border-radius: 6px;
+        width: 100%;
+        height: 50%;
+        transition: 300ms;
+        text-decoration: none;
+    }
+
+    .buttonDelete:hover span {
+        background: none;
+        text-decoration: none;
+        outline: none;
+    }
+
+@media (min-width: 334px) {
+    .buttonDelete {
+        font-size: 12px;
+        min-width: 98px;
+        text-decoration: none;
+        outline: none;
+    }
+}
