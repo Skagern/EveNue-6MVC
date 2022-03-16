@@ -11,7 +11,7 @@ using SendGrid.Helpers.Mail;
 using static GruppNrSexMVC.Models.Example;
 using System.Net.Http;
 using Newtonsoft.Json;
-
+using System.Net.Http.Json;
 
 namespace GruppNrSexMVC.Controllers
 {
@@ -171,18 +171,22 @@ namespace GruppNrSexMVC.Controllers
         public async Task<IActionResult> Send(EmailModel emailmodel)
         {
             ViewData["Message"] = "Email Sent!!!...";
-            Example emailexample = new Example();
-            await emailexample.Execute(emailmodel.To, emailmodel.Subject, emailmodel.Body
-                , emailmodel.Body);
+             //Example emailexample = new Example();
+           // await emailexample.Execute(emailmodel.To, emailmodel.Subject, emailmodel.Body
+               // , emailmodel.Body);
+            HttpClient client = new ();
+            client.BaseAddress = new Uri("http://193.10.202.76/mailapi/api/email");
+            var response = await client.PostAsJsonAsync<EmailModel>("email", emailmodel);
 
-            return View();
+            return RedirectToAction("Index","Admin");
         }
 
-        //public bool Execute()
+        //public Task<Response> Execute()
         //{
         //    Example emailexample = new Example();
-        //    emailexample.Execute().Wait();
-        //    return true;
+        //    var response = emailexample.Execute();
+
+        //    return response;
 
         //}
     }

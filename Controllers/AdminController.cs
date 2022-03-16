@@ -51,9 +51,10 @@ namespace GruppNrSexMVC.Controllers
         {
             using (var client = new HttpClient())
             {
-                using (var memoryStream = new System.IO.MemoryStream())
+                if (sponsor.UppladdadBild != null)
                 {
-                   await sponsor.UppladdadBild.CopyToAsync(memoryStream);
+                    using var memoryStream = new System.IO.MemoryStream();
+                    await sponsor.UppladdadBild.CopyToAsync(memoryStream);
                     sponsor.Image = memoryStream.ToArray();
                 }
 
