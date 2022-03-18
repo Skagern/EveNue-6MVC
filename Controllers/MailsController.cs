@@ -29,7 +29,7 @@ namespace GruppNrSexMVC.Controllers
         {
             List<MailListModel> email = new List<MailListModel>();
             HttpClient client = new HttpClient();
-            var response = await client.GetAsync("http://193.10.202.76/MailAPI/api/MailListModels");
+            var response = await client.GetAsync("http://193.10.202.76/MailAPI/api/MailList");
             string jsonresponse = await response.Content.ReadAsStringAsync();
             email = JsonConvert.DeserializeObject<List<MailListModel>>(jsonresponse);
 

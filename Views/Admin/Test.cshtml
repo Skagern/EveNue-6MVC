@@ -32,51 +32,53 @@
 
             </div>
 
+            <div class="evenue-card-text-container">
+                <p style="margin-left:-10px; margin-top:20px">
+                    <strong>
+                        Company:
 
-            <p style="margin-left:-10px; margin-top:20px">
-                <strong>
-                    Company:
-
-                </strong>
-                @Html.DisplayFor(model => item.Name)
-            </p>
-
-
-
-            <p style="margin-left:-10px">
-                <strong>
-                    Company description:
-                </strong>
-
-                @Html.DisplayFor(model => item.Description)
-            </p>
-
-
-            <p style="margin-left:-10px">
-                <strong>
-                    Website:
-                </strong>
-
-                @Html.DisplayFor(model => item.URL)
-            </p>
-
-            <p style="margin-left:-10px">
-                <strong>
-                    Email:
-                </strong>
-
-                @Html.DisplayFor(model => item.Email)
-            </p>
+                    </strong>
+                    @Html.DisplayFor(model => item.Name)
+                </p>
 
 
 
+                <p style="margin-left:-10px">
+                    <strong>
+                        Company description:
+                    </strong>
 
-            <a asp-action="Edit" asp-route-id="@item.Id"><button class="buttonCard" ><span class="text">Edit sponsor</span></button></a>
+                    @Html.DisplayFor(model => item.Description)
+                </p>
 
-            <br />
+
+                <p style="margin-left:-10px">
+                    <strong>
+                        Website:
+                    </strong>
+
+                    @Html.DisplayFor(model => item.URL)
+                </p>
+
+                <p style="margin-left:-10px">
+                    <strong>
+                        Email:
+                    </strong>
+
+                    @Html.DisplayFor(model => item.Email)
+                </p>
+            </div>
 
 
-            <a asp-action="Delete" asp-route-id="@item.Id"><button class="buttonDelete"><span class="text">Delete sponsor</span></button></a>
+
+            <div class="buttoncard1">
+                <a asp-action="Edit" asp-route-id="@item.Id"><button class="buttonEdit col-md-6"><span class="text">Edit sponsor</span></button></a>
+
+                <br />
+
+
+                <a class="buttonCardDelete" asp-action="Delete" asp-route-id="@item.Id"><button class="buttonDelete col-md-6"><span class="text">Delete sponsor</span></button></a>
+            </div>
         </div>
 
 
@@ -90,5 +92,5 @@
 <br />
 <br />
 <br />
-<h4 style="margin-left:200px">Click the button below to create a new sponsor</h4>
-<a asp-action="Create"><button class="button-64" role="button"> <span class="text"> Create new sponsor</span> </button></a>
+
+<a asp-action="Create"><button class="buttonCreate" role="button"> <span class="text"> Create new sponsor</span> </button></a>

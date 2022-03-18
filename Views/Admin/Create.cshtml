@@ -4,9 +4,9 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create Sponsor:</h1>
+<h1>Lägg till:</h1>
 
-
+<h4>Sponsor</h4>
 <hr />
 
 @using (Html.BeginForm("Create", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -46,10 +46,10 @@
              <input type="file" asp-for="UppladdadBild" />
          </div>
      </div> 
- 
+
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Upload" class="button-64" class1="button-64 span">
+            <Button type="submit" class="buttonCreate"><span class="text">Upload</span></Button>
         </div>
     </div>
 </div>
