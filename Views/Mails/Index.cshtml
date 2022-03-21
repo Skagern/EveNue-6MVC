@@ -6,7 +6,7 @@
 
 <h1>Emails</h1>
 
-<a asp-action="Create"><button class="button-64"><span class="text">Create mail</span></button></a>
+
 <table class="table">
     <thead>
         <tr>
@@ -19,19 +19,24 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Mailadress)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mailadress)
+            </td>
+            
+            <td>
+                <div class="buttoncard1">
+                    <a asp-action="Edit" asp-route-id="@item.Id"><button class="buttonEdit2"><span class="text">Edit</span></button></a><p>   </p>
+                    <a asp-action="Details" asp-route-id="@item.Id"><button class="buttonEdit2"><span class="text">Details</span></button></a><p>   </p>
+                    <a asp-action="Delete" asp-route-id="@item.Id"><button class="buttonDelete"><span class="text">Delete</span></button></a>
+                </div>
+            </td>
+            
+        </tr>
         }
     </tbody>
 </table>
+<a asp-action="Create"><button class="buttonCreate"><span class="text">Create mail</span></button></a>
 
-<input type="button" value="Send" onclick="location.href='@Url.Action("Execute", "Mails")'" />
+
 
