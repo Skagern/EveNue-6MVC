@@ -12,6 +12,7 @@ using static GruppNrSexMVC.Models.Example;
 using System.Net.Http;
 using Newtonsoft.Json;
 using System.Net.Http.Json;
+using System.Text;
 
 namespace GruppNrSexMVC.Controllers
 {
@@ -29,7 +30,7 @@ namespace GruppNrSexMVC.Controllers
         {
             List<MailListModel> email = new List<MailListModel>();
             HttpClient client = new HttpClient();
-            var response = await client.GetAsync("http://193.10.202.76/MailAPI/api/MailList");
+            var response = await client.GetAsync("http://193.10.202.76/MailAPI/api/MailList/getMailList");
             string jsonresponse = await response.Content.ReadAsStringAsync();
             email = JsonConvert.DeserializeObject<List<MailListModel>>(jsonresponse);
 
@@ -44,7 +45,7 @@ namespace GruppNrSexMVC.Controllers
                 return NotFound();
             }
 
-            var mailListModel = await _context.MailList
+            var mailListModel = await _context.MailListModel
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (mailListModel == null)
             {
@@ -57,34 +58,37 @@ namespace GruppNrSexMVC.Controllers
         // GET: Mails/Create
         public IActionResult Create()
         {
-            return View();
+                       return View();
         }
+
 
         // POST: Mails/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Mailadress")] MailListModel mailListModel)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(mailListModel);
-                await _context.SaveChangesAsync();
+                HttpClient client = new HttpClient();
+                var stringContent = new StringContent(JsonConvert.SerializeObject(mailListModel), Encoding.UTF8, "application/json");
+                var response = await client.PostAsync("http://193.10.202.76/MailAPI/api/MailList/addMail", stringContent);
                 return RedirectToAction(nameof(Index));
             }
             return View(mailListModel);
         }
 
         // GET: Mails/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var mailListModel = await _context.MailList.FindAsync(id);
+            HttpClient client = new HttpClient();
+            var response = await client.GetAsync("http://193.10.202.76/MailAPI/api/MailList/getMailListById?id=" + id);
+            MailListModel mailListModel = await response.Content.ReadAsAsync<MailListModel>();
             if (mailListModel == null)
             {
                 return NotFound();
@@ -96,7 +100,6 @@ namespace GruppNrSexMVC.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Mailadress")] MailListModel mailListModel)
         {
             if (id != mailListModel.Id)
@@ -108,8 +111,9 @@ namespace GruppNrSexMVC.Controllers
             {
                 try
                 {
-                    _context.Update(mailListModel);
-                    await _context.SaveChangesAsync();
+                    HttpClient client = new HttpClient();
+                    var stringContent = new StringContent(JsonConvert.SerializeObject(mailListModel), Encoding.UTF8, "application/json");
+                    var response = await client.PutAsync("http://193.10.202.76/MailAPI/api/MailList/editMail?id=" + id, stringContent);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -135,30 +139,26 @@ namespace GruppNrSexMVC.Controllers
                 return NotFound();
             }
 
-            var mailListModel = await _context.MailList
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (mailListModel == null)
-            {
-                return NotFound();
-            }
+            var mailListModel = await _context.Sponsors
+               .FirstOrDefaultAsync(m => m.Id == id);
+            HttpClient client = new HttpClient();
+            var response = await client.DeleteAsync("http://193.10.202.76/MailAPI/api/MailList/deleteMail?id=" + id);
 
             return View(mailListModel);
         }
 
         // POST: Mails/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var mailListModel = await _context.MailList.FindAsync(id);
-            _context.MailList.Remove(mailListModel);
-            await _context.SaveChangesAsync();
+            HttpClient client = new HttpClient();
+            var response = await client.DeleteAsync("http://193.10.202.76/MailAPI/api/MailList/deleteMail?id=" + id);
             return RedirectToAction(nameof(Index));
         }
 
         private bool MailListModelExists(int id)
         {
-            return _context.MailList.Any(e => e.Id == id);
+            return _context.MailListModel.Any(e => e.Id == id);
         }
 
         public IActionResult Send()
