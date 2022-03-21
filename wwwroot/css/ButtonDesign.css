@@ -64,10 +64,16 @@
 
 
 
-/*CSS*/
-.buttonSend {
+
+
+
+
+
+
+/* CSS */
+.buttonEdit2 {
     align-items: center;
-    background-image: linear-gradient(144deg,#00144a, #00127c 50%,#003bb5); /*#D36716 #313177*/
+    background-image: linear-gradient(144deg,#D36716, #303076ff 50%,#313177); /*#D36716 #313177*/
     border: 0;
     border-radius: 8px;
     box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
@@ -78,8 +84,8 @@
     font-size: 20px;
     justify-content: center;
     line-height: 1em;
-    max-width: 100%;
-    min-width: 140px;
+    max-width: 50%;
+    min-width: 70px;
     padding: 3px;
     text-decoration: none;
     user-select: none;
@@ -87,42 +93,53 @@
     touch-action: manipulation;
     white-space: nowrap;
     cursor: pointer;
-    margin-left: 50%;
-    margin-right: 50%;
-    margin-top: 50px;
-    outline: none;
+    align-content: center;
+    text-align: center;
 }
 
-    .buttonCreate2:active,
-    .buttonCreate2:hover {
+    .buttonEdit2:active,
+    .buttonEdit2:hover {
         text-decoration: none;
         outline: none;
     }
 
-    .buttonCreate2 span {
+    .buttonEdit2 span {
         background-color: black;
-        padding: 16px 24px;
+        padding: 20px 0px;
         border-radius: 6px;
         width: 100%;
-        height: 100%;
+        height: 50%;
         transition: 300ms;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
         text-decoration: none;
     }
 
-    .buttonCreate2:hover span {
+    .buttonEdit2:hover span {
+        text-align: center;
         background: none;
         text-decoration: none;
         outline: none;
     }
 
-@media (min-width: 768px) {
-    .buttonCreate2 {
-        font-size: 24px;
-        min-width: 196px;
+@media (min-width: 334px) {
+    .buttonEdit2 {
+        text-align: center;
+        font-size: 12px;
+        min-width: 98px;
         text-decoration: none;
         outline: none;
     }
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -132,7 +149,7 @@
 /* CSS */
 .buttonEdit {
     align-items: center;
-    background-image: linear-gradient(144deg,#D36716, #303076ff 50%,#313177); /*#D36716 #313177*/
+    background-image: linear-gradient(144deg,#00124e, #002a8e 50%,#0060c8); /*#D36716 #313177*/
     border: 0;
     border-radius: 8px;
     box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
