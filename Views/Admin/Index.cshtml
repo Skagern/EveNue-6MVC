@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<GruppNrSexMVC.Models.Sponsor>
 
 
-<h1>Sponsors</h1>
+<h1>Sponsorer</h1>
 
 
 
@@ -35,7 +35,7 @@
             <div class="evenue-card-text-container">
                 <p style="margin-left:-10px; margin-top:20px">
                     <strong>
-                        Company:
+                        Företag:
 
                     </strong>
                     @Html.DisplayFor(model => item.Name)
@@ -45,7 +45,7 @@
 
                 <p style="margin-left:-10px">
                     <strong>
-                        Company description:
+                        Företagsbeskrivning:
                     </strong>
 
                     @Html.DisplayFor(model => item.Description)
@@ -54,7 +54,7 @@
 
                 <p style="margin-left:-10px">
                     <strong>
-                        Website:
+                        Hemsida:
                     </strong>
 
                     @Html.DisplayFor(model => item.URL)
@@ -62,7 +62,7 @@
 
                 <p style="margin-left:-10px">
                     <strong>
-                        Email:
+                        Mejl:
                     </strong>
 
                     @Html.DisplayFor(model => item.Email)
@@ -72,12 +72,12 @@
 
 
             <div class="buttoncard1">
-                <a asp-action="Edit" asp-route-id="@item.Id"><button class="buttonEdit2 col-md-6"><span class="text">Edit sponsor</span></button></a>
+                <a asp-action="Edit" asp-route-id="@item.Id"><button class="buttonEdit2 col-md-6"><span class="text">Korrigera</span></button></a>
 
                 <br />
 
 
-                <a class="buttonCardDelete" asp-action="Delete" asp-route-id="@item.Id"><button class="buttonDelete col-md-6"><span class="text">Delete sponsor</span></button></a>
+                <a class="buttonCardDelete" asp-action="Delete" asp-route-id="@item.Id"><button class="buttonDelete col-md-6"><span class="text">Radera</span></button></a>
             </div>
         </div>
 
@@ -93,4 +93,4 @@
 <br />
 <br />
 
-<a asp-action="Create"><button class="buttonCreate" role="button"> <span class="text"> Create new sponsor</span> </button></a>
+<a asp-action="Create"><button class="buttonCreate" role="button"> <span class="text">Skapa Ny Sponsor</span> </button></a>

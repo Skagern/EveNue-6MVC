@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Emails</h1>
+<h1>Mejladresser</h1>
 
 
 <table class="table">
@@ -26,9 +26,9 @@
             
             <td>
                 <div class="buttoncard1">
-                    <a asp-action="Edit" asp-route-id="@item.Id"><button class="buttonEdit2"><span class="text">Edit</span></button></a><p>   </p>
-                    <a asp-action="Details" asp-route-id="@item.Id"><button class="buttonEdit2"><span class="text">Details</span></button></a><p>   </p>
-                    <a asp-action="Delete" asp-route-id="@item.Id"><button class="buttonDelete"><span class="text">Delete</span></button></a>
+                    <a asp-action="Edit" asp-route-id="@item.Id"><button class="buttonEdit2"><span class="text">Korrigera</span></button></a><p>   </p>
+                    <a asp-action="Details" asp-route-id="@item.Id"><button class="buttonEdit2"><span class="text">Detaljer</span></button></a><p>   </p>
+                    <a asp-action="Delete" asp-route-id="@item.Id"><button class="buttonDelete"><span class="text">Radera</span></button></a>
                 </div>
             </td>
             
@@ -36,7 +36,7 @@
         }
     </tbody>
 </table>
-<a asp-action="Create"><button class="buttonCreate"><span class="text">Create mail</span></button></a>
+<a asp-action="Create"><button class="buttonCreate"><span class="text">Skapa Mejl</span></button></a>
 
 
 
