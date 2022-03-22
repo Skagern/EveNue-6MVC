@@ -3,10 +3,7 @@
     ViewData["Title"] = "Send";
 }
 
-<h1>Skicka Mejl:</h1>
-
-<h4>Formulär</h4>
-<hr />
+<h1>SKICKA TILL ALLA ADRESSER</h1>
 
 @using (Html.BeginForm("SendToAll", "Mails", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
@@ -15,7 +12,7 @@
     <div class="form-horizontal">
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-     
+
         <div class="form-group">
             @Html.LabelFor(model => model.Subject, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -25,15 +22,21 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Body, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Body, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextAreaFor(model => model.Body, new { htmlAttributes = new { @class = "form-control" } })
             </div>
         </div>
 
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Skicka Mejl" class="btn btn-primary" />
+                <Button type="submit" class="buttonCreate"><span class="text">SKICKA</span></Button>
             </div>
         </div>
+
     </div>
+
+
 }
+<div>
+    <a asp-controller="Mails" asp-action="Index"><button class="buttonEdit"><span class="text">TILLBAKA</span></button></a>
+</div>

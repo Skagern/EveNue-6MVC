@@ -1,7 +1,8 @@
 ﻿@model GruppNrSexMVC.Models.LoginDetails
+@using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
 
-
-<form class="form-signin" asp-controller="Home" asp-action="Loggain">
+{
+<form class="form-signin" asp-controller="Loggain" asp-action="Loggain">
 
     <h1 class="h3 mb-3 font-weight-normal">Logga in</h1>
 
@@ -26,3 +27,4 @@
     <button class="btn btn-lg btn-dark btn-block" id="grad-btn" type="submit">Logga in</button>
 
 </form> 
+}

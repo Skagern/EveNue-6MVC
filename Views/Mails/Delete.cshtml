@@ -4,9 +4,9 @@
     ViewData["Title"] = "Delete";
 }
 
-<h1>Radera Mejl</h1>
+<h1>Delete Mail</h1>
 
-<h3>Är du säker att du vill radera denna mejl?</h3>
+<h3>Vill du verkligen ta bort Mailadress? </h3>
 <div>
     
     <hr />
@@ -22,6 +22,6 @@
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
         <Button type="submit" class="buttonDelete2"><span class="text">Radera</span></Button> |
-        <a asp-action="Index"><button class="buttonEdit"><span class="text">Tillbaka Till Mejladresser</span></button></a>
+        <a asp-action="Index"><button class="buttonEdit"><span class="text">TILLBAKA</span></button></a>
     </form>
 </div>

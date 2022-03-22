@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Mejladresser</h1>
+<h1>MAILADRESSER: </h1>
 
 
 <table class="table">
@@ -26,9 +26,8 @@
             
             <td>
                 <div class="buttoncard1">
-                    <a asp-action="Edit" asp-route-id="@item.Id"><button class="buttonEdit2"><span class="text">Korrigera</span></button></a><p>   </p>
-                    <a asp-action="Details" asp-route-id="@item.Id"><button class="buttonEdit2"><span class="text">Detaljer</span></button></a><p>   </p>
-                    <a asp-action="Delete" asp-route-id="@item.Id"><button class="buttonDelete"><span class="text">Radera</span></button></a>
+                    <a asp-action="Edit" asp-route-id="@item.Id"><button class="buttonEdit2"><span class="text">REDIGERA</span></button></a><p>   </p>
+                    <a asp-action="Delete" asp-route-id="@item.Id"><button class="buttonDelete"><span class="text">RADERA</span></button></a>
                 </div>
             </td>
             
@@ -36,7 +35,10 @@
         }
     </tbody>
 </table>
-<a asp-action="Create"><button class="buttonCreate"><span class="text">Skapa Mejl</span></button></a>
-
+<div class="buttoncard1">
+    <a asp-action="Create"><button class="button"><span class="text">LÄGG TILL MAIL</span></button></a>
+    <a asp-action="Send"><button class="button"><span class="text">SKICKA TILL ADRESS</span></button></a>
+    <a asp-action="SendToAll"><button class="button"><span class="text">SKICKA TILL ALLA</span></button></a>
+</div>
 
 

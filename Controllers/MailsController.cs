@@ -13,9 +13,11 @@ using System.Net.Http;
 using Newtonsoft.Json;
 using System.Net.Http.Json;
 using System.Text;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GruppNrSexMVC.Controllers
 {
+    [Authorize]
     public class MailsController : Controller
     {
         private readonly SponsorContext _context;
@@ -24,7 +26,6 @@ namespace GruppNrSexMVC.Controllers
         {
             _context = context;
         }
-
         // GET: Mails
         public async Task<IActionResult> Index()
         {
@@ -173,9 +174,10 @@ namespace GruppNrSexMVC.Controllers
             ViewData["Message"] = "Email Sent!!!...";
             HttpClient client = new ();
             client.BaseAddress = new Uri("http://193.10.202.76/mailapi/api/email");
-            var response = await client.PostAsJsonAsync<EmailModel>("email", emailmodel);
+            var response = await client.PostAsJsonAsync<EmailModel>("http://193.10.202.76/mailapi/api/email", emailmodel);
+            Console.WriteLine(response);
 
-            return RedirectToAction("Index","Admin");
+            return RedirectToAction("Index","Mails");
         }
 
         public IActionResult SendToAll()
@@ -185,27 +187,7 @@ namespace GruppNrSexMVC.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> SendToAll(EmailModel emailmodel)
-        {
-
-            // List<MailListModel> email = new();
-            //HttpClient client = new HttpClient();
-            //var response = await client.GetAsync("http://193.10.202.76/MailAPI/api/MailList");
-            //string jsonresponse = await response.Content.ReadAsStringAsync();
-            //email = JsonConvert.DeserializeObject<List<MailListModel>>(jsonresponse);
-            //var email = await this.Index();
-            //if (email != null)
-            //{
-            //   List<String> adress = new List<String>();
-            //  foreach (MailListModel mailListModel in email)
-            // {
-            //    adress.Add(mailListModel.Mailadress);
-            //}
-            //var result = String.Join(",", adress);
-            //emailmodel.To = result; 
-            //HttpClient client1 = new();
-            //client1.BaseAddress = new Uri("http://193.10.202.76/mailapi/api/email");
-            //var response1 = await client1.PostAsJsonAsync<EmailModel>("email", emailmodel);
-
+        { 
             Example emailexample = new Example();
             await emailexample.ExecuteAll(emailmodel.Subject, emailmodel.Body, emailmodel.Body);
         

@@ -9,6 +9,7 @@ using GruppNrSexMVC.Models;
 using System.Net.Http;
 using Newtonsoft.Json;
 using System.Net.Http.Json;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GruppNrSexMVC.Controllers
 {
@@ -42,6 +43,7 @@ namespace GruppNrSexMVC.Controllers
             return View();
         }
 
+        [Authorize]
         // POST: Admin/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -76,6 +78,7 @@ namespace GruppNrSexMVC.Controllers
         }
 
         // GET: Admin/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
 
@@ -98,6 +101,7 @@ namespace GruppNrSexMVC.Controllers
         // POST: Admin/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,URL,Email,Image,UppladdadBild")] Sponsor sponsor)
@@ -135,6 +139,7 @@ namespace GruppNrSexMVC.Controllers
         }
 
         // GET: Admin/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -155,6 +160,7 @@ namespace GruppNrSexMVC.Controllers
         // POST: Admin/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var sponsor = await _context.Sponsors.FindAsync(id);

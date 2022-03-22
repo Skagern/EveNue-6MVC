@@ -1,6 +1,6 @@
 ﻿/* CSS */
 .buttonCreate {
-    align-items: center;
+    align-items: flex-end;
     background-image: linear-gradient(144deg,#D36716, #303076ff 50%,#313177); /*#D36716 #313177*/
     border: 0;
     border-radius: 8px;
@@ -14,7 +14,6 @@
     line-height: 1em;
     max-width: 100%;
     min-width: 140px;
-    padding: 3px;
     text-decoration: none;
     user-select: none;
     -webkit-user-select: none;
@@ -423,9 +422,18 @@
 
 
 .buttoncard1 {
+    align-items: flex-start;
     margin-bottom: 15px;
     justify-content: center;
 }
+
+
+.buttoncard2 {
+    margin-bottom: 15px;
+    padding: 2px;
+    justify-content:normal;
+}
+
 
 
 

@@ -1,8 +1,7 @@
 ﻿<!-- If user is logged in, these will be shown in the header-->
 @if (User.Identity.IsAuthenticated)
 {
-    <li class="nav-item"><a class="nav-link" href="~/Home/SignOut">Logga ut</a></li>
-    <li class="nav-item"><a class="nav-link" href="~/Home/Profil">Min sida</a></li>
+    <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Loggain" asp-action="LoggaUt">Logga ut</a></li> 
 }
 else
 {

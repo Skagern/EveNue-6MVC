@@ -16,9 +16,9 @@ namespace GruppNrSexMVC.Controllers
     public class LoggainController : Controller
     {
 
-        public async Task<IActionResult> Loggain()
+        public async Task<IActionResult> Loggain(string returnUrl)
         {
-
+            ViewBag.ReturnUrl = returnUrl;
             return View();
 
         }
@@ -26,8 +26,7 @@ namespace GruppNrSexMVC.Controllers
 
 
         [HttpPost]
-
-        public async Task<IActionResult> Loggain(string username, string password)
+        public async Task<IActionResult> Loggain(string username, string password, string returnUrl)
 
         {
 
@@ -79,8 +78,7 @@ namespace GruppNrSexMVC.Controllers
                 new ClaimsPrincipal(identity));
 
 
-
-                return View(recievedLogin);
+                return Redirect(returnUrl);
 
 
 
@@ -98,8 +96,12 @@ namespace GruppNrSexMVC.Controllers
 
         }
 
+        public async Task<IActionResult> LoggaUt()
+        {
 
-
+            await HttpContext.SignOutAsync();
+            return RedirectToAction("Index", "Home");
+        }
 
 
     }
