@@ -8,78 +8,81 @@
 <div class="row col-md-12">
     @foreach (var item in Model)
     {
-        <div class="card col-md-3">
-            <div class="card-img-top" style="padding-top:20px;">
+    <div class="card col-md-3">
+        <div class="card-img-top" style="padding-top:20px;">
 
-                @if (item.Image != null)
-                {
-                    <img src="data:image;base64,@System.Convert.ToBase64String(item.Image)"
-                         style="height: 225px;
+            @if (item.Image != null)
+            {
+                <img src="data:image;base64,@System.Convert.ToBase64String(item.Image)"
+                     style="height: 225px;
                                             width: 100%;
                                             border-radius: calc(.25rem - 1px);
                                             border-style:solid;
                                             border-width:1px;" />
-                }
-                else
-                {
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg"
-                         style="height: 225px;
+            }
+            else
+            {
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg"
+                     style="height: 225px;
                                             width: 100%;
                                             border-radius: calc(.25rem - 1px);
                                             border-style:solid;
                                             border-width:1px;" />
-                }
+            }
 
-            </div>
-
-            <div class="evenue-card-text-container">
-                <p style="margin-left:-10px; margin-top:20px">
-                    <strong>
-                        Företag:
-
-                    </strong>
-                    @Html.DisplayFor(model => item.Name)
-                </p>
-
-
-
-                <p style="margin-left:-10px">
-                    <strong>
-                        Företagsbeskrivning:
-                    </strong>
-
-                    @Html.DisplayFor(model => item.Description)
-                </p>
-
-
-                <p style="margin-left:-10px">
-                    <strong>
-                        Hemsida:
-                    </strong>
-
-                    @Html.DisplayFor(model => item.URL)
-                </p>
-
-                <p style="margin-left:-10px">
-                    <strong>
-                        Mejl:
-                    </strong>
-
-                    @Html.DisplayFor(model => item.Email)
-                </p>
-            </div>
-
-
-
-            <div class="buttoncard1">
-                <a asp-action="Edit" asp-route-id="@item.Id"><button class="buttonEdit2 col-md-6"><span class="text">Korrigera</span></button></a>
-
-                <br />
-
-
-                <a class="buttonCardDelete" asp-action="Delete" asp-route-id="@item.Id"><button class="buttonDelete col-md-6"><span class="text">Radera</span></button></a>
-            </div>
         </div>
+
+        <div class="evenue-card-text-container">
+            <p style="margin-left:-10px; margin-top:20px">
+                <strong>
+                    Företag:
+
+                </strong>
+                @Html.DisplayFor(model => item.Name)
+            </p>
+
+
+
+            <p style="margin-left:-10px">
+                <strong>
+                    Företagsbeskrivning:
+                </strong>
+
+                @Html.DisplayFor(model => item.Description)
+            </p>
+
+
+            <p style="margin-left:-10px">
+                <strong>
+                    Hemsida:
+                </strong>
+
+                @Html.DisplayFor(model => item.URL)
+            </p>
+
+            <p style="margin-left:-10px">
+                <strong>
+                    Mejl:
+                </strong>
+
+                @Html.DisplayFor(model => item.Email)
+            </p>
+        </div>
+
+
+        @if (User.Identity.IsAuthenticated)
+        {
+    <div class="buttoncard1">
+        <a asp-action="Edit" asp-route-id="@item.Id"><button class="buttonEdit2 col-md-6"><span class="text">Korrigera</span></button></a>
+
+        <br />
+
+
+        <a class="buttonCardDelete" asp-action="Delete" asp-route-id="@item.Id"><button class="buttonDelete col-md-6"><span class="text">Radera</span></button></a>
+    </div>
+        }
+        
+    </div>
 
 
 
@@ -92,5 +95,7 @@
 <br />
 <br />
 <br />
-
+@if (User.Identity.IsAuthenticated)
+{
 <a asp-action="Create"><button class="buttonCreate" role="button"> <span class="text">Skapa Ny Sponsor</span> </button></a>
+}

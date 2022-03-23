@@ -26,7 +26,7 @@ namespace GruppNrSexMVC.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> Loggain(string username, string password, string returnUrl)
+        public async Task<dynamic> Loggain(string username, string password, string returnUrl)
 
         {
 
@@ -77,6 +77,10 @@ namespace GruppNrSexMVC.Controllers
 
                 new ClaimsPrincipal(identity));
 
+                if (returnUrl == null)
+                {
+                   return RedirectToAction("Index", "Home");
+                }
 
                 return Redirect(returnUrl);
 
