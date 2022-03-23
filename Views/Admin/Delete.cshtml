@@ -4,7 +4,7 @@
     ViewData["Title"] = "Delete";
 }
 
-<h1>Radera Sponsor</h1>
+<h1>RADERA SPONSOR</h1>
 
 <h3>Är du säker att du vill radera denna sponsoren?</h3>
 <div>
@@ -12,31 +12,31 @@
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayName("Namn")
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Name)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
+        <dt class="col-sm-2">
+            @Html.DisplayName("Beskrivning")
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Description)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.URL)
+        <dt class="col-sm-2">
+            @Html.DisplayName("Hemsida")
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.URL)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Email)
+        <dt class="col-sm-2">
+            @Html.DisplayName("Mailadress")
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Email)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Image)
+        <dt class="col-sm-2">
+            @Html.DisplayName("Bild")
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Image)
@@ -45,7 +45,7 @@
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
-        <Button type="submit" class="buttonDelete2"><span class="text">Radera</span></Button> 
-        <a asp-action="Index"><button class="buttonEdit"><span class="text">Tillbaka Till Sponsorer</span></button></a>
+        <Button type="submit" class="buttonDelete2"><span class="text">RADERA</span></Button> 
+        <a asp-action="Index"><button class="buttonEdit"><span class="text">TILLBAKA TILL SPONSORER</span></button></a>
     </form>
 </div>
