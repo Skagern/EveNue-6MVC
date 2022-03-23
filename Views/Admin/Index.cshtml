@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<GruppNrSexMVC.Models.Sponsor>
 
 
-<h1>Sponsorer</h1>
+<h1>SPONSORER</h1>
 
 
 
@@ -35,7 +35,7 @@
         <div class="evenue-card-text-container">
             <p style="margin-left:-10px; margin-top:20px">
                 <strong>
-                    Företag:
+                    FÖRETAG:
 
                 </strong>
                 @Html.DisplayFor(model => item.Name)
@@ -45,7 +45,7 @@
 
             <p style="margin-left:-10px">
                 <strong>
-                    Företagsbeskrivning:
+                    FÖRETAGSBESKRIVNING:
                 </strong>
 
                 @Html.DisplayFor(model => item.Description)
@@ -54,7 +54,7 @@
 
             <p style="margin-left:-10px">
                 <strong>
-                    Hemsida:
+                    HEMSIDA:
                 </strong>
 
                 @Html.DisplayFor(model => item.URL)
@@ -62,7 +62,7 @@
 
             <p style="margin-left:-10px">
                 <strong>
-                    Mejl:
+                    MAIL:
                 </strong>
 
                 @Html.DisplayFor(model => item.Email)
@@ -73,12 +73,12 @@
         @if (User.Identity.IsAuthenticated)
         {
     <div class="buttoncard1">
-        <a asp-action="Edit" asp-route-id="@item.Id"><button class="buttonEdit2 col-md-6"><span class="text">Korrigera</span></button></a>
+        <a asp-action="Edit" asp-route-id="@item.Id"><button class="buttonEdit2 col-md-6"><span class="text">KORRIGERA</span></button></a>
 
         <br />
 
 
-        <a class="buttonCardDelete" asp-action="Delete" asp-route-id="@item.Id"><button class="buttonDelete col-md-6"><span class="text">Radera</span></button></a>
+        <a asp-action="Delete" asp-route-id="@item.Id"><button class="buttonDelete col-md-6"><span class="text">RADERA</span></button></a>
     </div>
         }
         

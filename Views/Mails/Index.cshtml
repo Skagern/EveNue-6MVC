@@ -26,7 +26,7 @@
             
             <td>
                 <div class="buttoncard1">
-                    <a asp-action="Edit" asp-route-id="@item.Id"><button class="buttonEdit2"><span class="text">REDIGERA</span></button></a><p>   </p>
+                    <a asp-action="Edit" asp-route-id="@item.Id"><button class="buttonEdit2"><span class="text">REDIGERA</span></button></a>
                     <a asp-action="Delete" asp-route-id="@item.Id"><button class="buttonDelete"><span class="text">RADERA</span></button></a>
                 </div>
             </td>
@@ -36,9 +36,9 @@
     </tbody>
 </table>
 <div class="buttoncard1">
-    <a asp-action="Create"><button class="button"><span class="text">LÄGG TILL MAIL</span></button></a>
-    <a asp-action="Send"><button class="button"><span class="text">SKICKA TILL ADRESS</span></button></a>
-    <a asp-action="SendToAll"><button class="button"><span class="text">SKICKA TILL ALLA</span></button></a>
+    <a asp-action="Create"><button class="buttonMail"><span class="text">LÄGG TILL MAIL</span></button></a>
+    <a asp-action="Send"><button class="buttonMail"><span class="text">SKICKA TILL ADRESS</span></button></a>
+    <a asp-action="SendToAll"><button class="buttonMail"><span class="text">SKICKA TILL ALLA</span></button></a>
 </div>
 
 
