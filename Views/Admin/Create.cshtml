@@ -4,9 +4,9 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Skapa Ny:</h1>
+<h1>SKAPA NY:</h1>
 
-<h4>Sponsor</h4>
+<h4>SPONSOR</h4>
 <hr />
 
 @using (Html.BeginForm("Create", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -17,31 +17,31 @@
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="form-group">
-        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+        <p class="col-md-2"><strong>Namn</strong></p>
         <div class="col-md-10">
             @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+        <p class="col-md-2"><strong>Beskrivning</strong></p>
         <div class="col-md-10">
             @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(model => model.URL, htmlAttributes: new { @class = "control-label col-md-2" })
+        <p class="col-md-2"><strong>Hemsida</strong></p>
         <div class="col-md-10">
             @Html.EditorFor(model => model.URL, new { htmlAttributes = new { @class = "form-control" } })
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+        <p class="col-md-2"><strong>Mailadress</strong></p>
         <div class="col-md-10">
             @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
         </div>
     </div>
      <div class="form-group">
-         @Html.LabelFor(model => model.Image, htmlAttributes: new { enctype = "multipart/form-data", @class = "control-label col-md-2" })
+         <p class="col-md-2"><strong>Bild</strong></p>
          <div class="col-md-10">
              <input type="file" asp-for="UppladdadBild" />
          </div>
@@ -49,7 +49,7 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <Button type="submit" class="buttonCreate"><span class="text">Ladda upp</span></Button>
+            <Button type="submit" class="buttonCreate"><span class="text">LADDA UPP</span></Button>
         </div>
     </div>
 </div>
@@ -95,7 +95,7 @@
     </div>*@
 
 <div>
-    <a asp-action="Index"><button class="buttonEdit"><span class="text">Tillbaka Till Sponsorer</span></button></a>
+    <a asp-action="Index"><button class="buttonEdit"><span class="text">TILLBAKA TILL SPONSORER</span></button></a>
 </div>
 
 @section Scripts {

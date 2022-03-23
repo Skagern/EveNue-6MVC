@@ -13,7 +13,8 @@
     justify-content: center;
     line-height: 1em;
     max-width: 100%;
-    min-width: 140px;
+    min-width: 75px;
+    padding: 3px;
     text-decoration: none;
     user-select: none;
     -webkit-user-select: none;
@@ -22,9 +23,9 @@
     cursor: pointer;
     margin-left: 50%;
     margin-right: 50%;
-    margin-top: 50px;
     outline: none;
 }
+
 
     .buttonCreate:active,
     .buttonCreate:hover {
@@ -34,19 +35,22 @@
 
     .buttonCreate span {
         background-color: black;
-        padding: 16px 24px;
+        padding: 20px 4px;
         border-radius: 6px;
         width: 100%;
-        height: 100%;
+        height: 50%;
         transition: 300ms;
         text-decoration: none;
     }
+/*align-items: center;
+text-align: center;
+justify-content: center;*/
 
-    .buttonCreate:hover span {
-        background: none;
-        text-decoration: none;
-        outline: none;
-    }
+.buttonCreate:hover span {
+    background: none;
+    text-decoration: none;
+    outline: none;
+}
 
 @media (min-width: 768px) {
     .buttonCreate {
@@ -59,6 +63,290 @@
 
 
 
+
+
+
+
+
+
+
+
+/* CSS */
+.buttonFirstpage {
+    position: relative;
+    align-items: center;
+    background-image: linear-gradient(144deg,#D36716, #303076ff 75%,#313177); /*#D36716 #313177*/
+   /* background-image: linear-gradient( to right, hsl(211, 100%, 50%), hsl(179, 100%, 30%) );*/
+    z-index: 1;
+    border: 0;
+    border-radius: 8px;
+    box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    display: flex;
+    font-family: Phantomsans, sans-serif;
+    font-size: 50px;
+    justify-content: center;
+    line-height: 1em;
+    width: 600px;
+    height: 400px;
+    min-width: 70px;
+    padding: 3px;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    cursor: pointer;
+    align-content: center;
+    text-align: center;
+    margin: 75px;
+    
+}
+
+
+
+    .buttonFirstpage::before {
+        position: absolute;
+        content: "";
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        border-radius: 8px;
+        background-image: linear-gradient(144deg,#000000, #000000 50%,#313177); /*#D36716 #313177*/
+        /*background-image: linear-gradient( to bottom, hsl(344, 100%, 50%), hsl(31, 100%, 40%) );*/
+        z-index: -1;
+        transition: opacity 0.5s linear;
+        opacity: 0;
+    }
+
+.buttonFirstpage:hover::before {
+    opacity: 1;
+}
+
+    /*.buttonFirstpage:active,
+    .buttonFirstpage:hover {
+        text-decoration: none;
+        outline: none;
+        transition: 300ms;
+        background-image: linear-gradient(144deg,#313177, #D36716 150%,#D36716);*/ /*#D36716 #313177*/
+    /*}*/
+
+    /*.buttonFirstpage span {
+        background-color: black;
+        padding: 20px 4px;
+        border-radius: 6px;
+        font-size: 50px;
+        width: 500px;
+        height: 300px;
+        transition: 300ms;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        text-decoration: none;
+    }*/
+
+    /*.buttonFirstpage:hover span {
+        text-align: center;
+        background: none;
+        text-decoration: none;
+        outline: none;
+    }*/
+
+@media (min-width: 334px) {
+    .buttonFirstpage {
+        text-align: center;
+        font-size: 12px;
+        min-width: 98px;
+        text-decoration: none;
+        outline: none;
+    }
+}
+
+
+
+.firstPageText{
+    font-size: 30px;
+}
+
+
+
+
+
+
+
+/* CSS */
+.buttonFirstpage2 {
+    position: relative;
+    align-items: center;
+    background-image: linear-gradient(144deg,#313177, #303076ff 20%,#D36716); /*#D36716 #313177*/
+    /* background-image: linear-gradient( to right, hsl(211, 100%, 50%), hsl(179, 100%, 30%) );*/
+    z-index: 1;
+    border: 0;
+    border-radius: 8px;
+    box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    display: flex;
+    font-family: Phantomsans, sans-serif;
+    font-size: 50px;
+    justify-content: center;
+    line-height: 1em;
+    width: 600px;
+    height: 400px;
+    min-width: 70px;
+    padding: 3px;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    cursor: pointer;
+    align-content: center;
+    text-align: center;
+    margin: 75px;
+    margin-bottom: 75px;
+}
+
+    .buttonFirstpage2::before {
+        position: absolute;
+        content: "";
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        border-radius: 8px;
+        background-image: linear-gradient(144deg,#313177, #000000 50%,#000000); /*#D36716 #313177*/
+        /*background-image: linear-gradient( to bottom, hsl(344, 100%, 50%), hsl(31, 100%, 40%) );*/
+        z-index: -1;
+        transition: opacity 0.5s linear;
+        opacity: 0;
+    }
+.buttonFirstpage2:hover::before {
+    opacity: 1;
+}
+    /*.buttonFirstpage2:active,
+    .buttonFirstpage2:hover {
+        text-decoration: none;
+        outline: none;
+        
+        transition: background-image 0.5s linear;
+        background-image: linear-gradient(144deg,#313177, #D36716 150%,#D36716);*/ /*#D36716 #313177*/
+    /*}*/
+
+    /*.buttonFirstpage2 span {
+        background-color: black;
+        padding: 20px 4px;
+        border-radius: 6px;
+        font-size: 50px;
+        width: 500px;
+        height: 300px;
+        transition: 300ms;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        text-decoration: none;
+    }*/
+
+    /*.buttonFirstpage2:hover span {
+        text-align: center;
+        background: none;
+        text-decoration: none;
+        outline: none;
+    }
+*/
+@media (min-width: 334px) {
+    .buttonFirstpage2 {
+        text-align: center;
+        font-size: 12px;
+        min-width: 98px;
+        text-decoration: none;
+        outline: none;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* CSS */
+.buttonMail {
+    align-items: center;
+    background-image: linear-gradient(144deg,#D36716, #303076ff 50%,#313177); /*#D36716 #313177*/
+    border: 0;
+    border-radius: 8px;
+    box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    display: flex;
+    font-family: Phantomsans, sans-serif;
+    font-size: 20px;
+    justify-content: center;
+    line-height: 1em;
+    max-width: 100%;
+    min-width: 70px;
+    padding: 3px;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    cursor: pointer;
+    align-content: center;
+    text-align: center;
+    margin: 10px;
+}
+
+    .buttonMail:active,
+    .buttonMail:hover {
+        text-decoration: none;
+        outline: none;
+    }
+
+    .buttonMail span {
+        background-color: black;
+        padding: 20px 4px;
+        border-radius: 6px;
+        width: 100%;
+        height: 50%;
+        transition: 300ms;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        text-decoration: none;
+    }
+
+    .buttonMail:hover span {
+        text-align: center;
+        background: none;
+        text-decoration: none;
+        outline: none;
+    }
+
+@media (min-width: 334px) {
+    .buttonMail {
+        text-align: center;
+        font-size: 12px;
+        min-width: 98px;
+        text-decoration: none;
+        outline: none;
+    }
+}
 
 
 
@@ -94,6 +382,7 @@
     cursor: pointer;
     align-content: center;
     text-align: center;
+    margin: 10px;
 }
 
     .buttonEdit2:active,
@@ -104,7 +393,7 @@
 
     .buttonEdit2 span {
         background-color: black;
-        padding: 20px 0px;
+        padding: 20px 4px;
         border-radius: 6px;
         width: 100%;
         height: 50%;
@@ -237,7 +526,7 @@
     white-space: nowrap;
     cursor: pointer;
     outline: none;
-    
+    margin: 10px;
     text-align: center;
 }
 
@@ -249,7 +538,7 @@
 
     .buttonDelete span {
         background-color: black;
-        padding: 20px 0px;
+        padding: 20px 4px;
         border-radius: 6px;
         width: 100%;
         height: 50%;
@@ -421,6 +710,40 @@
 
 
 
+
+
+
+.divFirstpage1 {
+    align-items: flex-start;
+    margin-bottom: 15px;
+    justify-content: center;
+}
+@media screen and (min-width: 1250px) {
+    .divFirstpage1 {
+        margin-bottom: 15px;
+        display: flex;
+        justify-content: center;
+    }
+
+
+
+    .evenue-card-text-container {
+        margin: 0;
+        padding: 0;
+        min-height: 500px;
+    }
+
+    .evenue-align-horizontal {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+}
+
+
+
+
+
 .buttoncard1 {
     align-items: flex-start;
     margin-bottom: 15px;
@@ -440,28 +763,28 @@
 
 @media screen and (min-width: 1000px) {
     .buttonCardDelete {
-    margin-bottom: 15px;
-    margin-left:5px;
-    
-}
-
-@media screen and (min-width: 1000px) {
-    .buttoncard1 {
         margin-bottom: 15px;
-        display: flex;
-        justify-content: center;
+        margin-left: 5px;
     }
 
+    @media screen and (min-width: 1000px) {
+        .buttoncard1 {
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: center;
+        }
 
 
-    .evenue-card-text-container {
-        margin: 0;
-        padding: 0;
-        min-height: 500px;
-    }
 
-    .evenue-align-horizontal {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
+        .evenue-card-text-container {
+            margin: 0;
+            padding: 0;
+            min-height: 500px;
+        }
+
+        .evenue-align-horizontal {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
     }
