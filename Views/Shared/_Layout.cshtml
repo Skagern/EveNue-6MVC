@@ -165,7 +165,7 @@
                         <!--Grid column-->
                         <div class="col-auto">
                             <!-- Submit button -->
-                            <button type="submit" for="form5Example21" class="btn btn-outline-light mb-4">
+                            <button id="addMailButton" type="submit" for="form5Example21" class="btn btn-outline-light mb-4">
                                 Prenumerera
                             </button>
                         </div>
@@ -205,6 +205,33 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
+
+    <script>
+        const fetchDataBtn = document.querySelector('#addMailButton')
+        const data = { mailadress: '' };
+
+        fetch('http://193.10.202.76/MailAPI/api/MailList/addMail', {
+            method: 'POST', // or 'PUT'
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+
+        fetchDataBtn.addEventListener('click', data)
+    </script>
+    
+
+
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
