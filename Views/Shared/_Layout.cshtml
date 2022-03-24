@@ -156,16 +156,16 @@
                         <!--Grid column-->
                         <div class="col-md-5 col-12">
                             <!-- Email input -->
-                            <div class="form-outline form-white mb-4">
-                                <input type="email" name="form5Example21" id="form5Example21" class="form-control" />
-                                <label class="form-label" for="form5Example21">E-mail adress</label>
+                            <div class="form-outline form-white mb-4">                                                                      
+                                <input type="email" name="form5Example21" id="form5Example21" class="form-control" />                   <!--NEW EMAIL-->
+                                <label class="form-label" for="form5Example21">E-mail adress</label>                                
                             </div>
                         </div>
                         <!--Grid column-->
                         <!--Grid column-->
                         <div class="col-auto">
                             <!-- Submit button -->
-                            <button onclick="newmail(document.getElementById('form5Example21'))" class="btn btn-outline-light mb-4">
+                            <button onclick="newmail(document.getElementById('form5Example21'))" class="btn btn-outline-light mb-4">    <!--NEW EMAIL-->
                                 Prenumerera
                             </button>
                         </div>
@@ -206,10 +206,11 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
 
-    <!--ADD NEW MAIL TO LIST-->
+    <!--ADD NEW MAIL TO LIST // PLACERA UNDER FOOTER I _LAYOUT-->
+    <!--WORKS-->
     <script>
         function newmail() {
-            const data = document.getElementById('form5Example21').value;
+            const data = { "mailadress": document.getElementById('form5Example21').value };
 
             fetch('http://193.10.202.76/MailAPI/api/MailList/addMail', {
                 method: 'POST', // or 'PUT'
