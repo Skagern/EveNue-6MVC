@@ -165,7 +165,7 @@
                         <!--Grid column-->
                         <div class="col-auto">
                             <!-- Submit button -->
-                            <button id="addMailButton" type="submit" for="form5Example21" class="btn btn-outline-light mb-4">
+                            <button onclick="newmail(document.getElementById('form5Example21'))" class="btn btn-outline-light mb-4">
                                 Prenumerera
                             </button>
                         </div>
@@ -208,25 +208,24 @@
 
     <!--ADD NEW MAIL TO LIST-->
     <script>
-        const fetchDataBtn = document.querySelector('#addMailButton')
-        const data = { mailadress: '' };
+        function newmail(mailadress) {
+            const data = mailadress;
 
-        fetch('http://193.10.202.76/MailAPI/api/MailList/addMail', {
-            method: 'POST', // or 'PUT'
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-        })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Success:', data);
+            fetch('http://193.10.202.76/MailAPI/api/MailList/addMail', {
+                method: 'POST', // or 'PUT'
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
             })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
-
-        fetchDataBtn.addEventListener('click', data)
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Success:', data);
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+        }
     </script>
     
 
