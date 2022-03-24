@@ -73,7 +73,7 @@
         @if (User.Identity.IsAuthenticated)
         {
     <div class="buttoncard1">
-        <a asp-action="Edit" asp-route-id="@item.Id"><button class="buttonEdit2 col-md-6"><span class="text">KORRIGERA</span></button></a>
+        <a asp-action="Edit" asp-route-id="@item.Id"><button class="buttonEdit2 col-md-6"><span class="text">REDIGERA</span></button></a>
 
         <br />
 
@@ -97,5 +97,5 @@
 <br />
 @if (User.Identity.IsAuthenticated)
 {
-<a asp-action="Create"><button class="buttonCreate" role="button"> <span class="text">Skapa Ny Sponsor</span> </button></a>
+<a asp-action="Create"><button class="buttonCreate" role="button"> <span class="text">SKAPA NY SPONSOR</span> </button></a>
 }
