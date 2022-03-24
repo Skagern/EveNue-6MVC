@@ -157,7 +157,7 @@
                         <div class="col-md-5 col-12">
                             <!-- Email input -->
                             <div class="form-outline form-white mb-4">
-                                <input type="email" id="form5Example21" class="form-control" />
+                                <input type="email" name="form5Example21" id="form5Example21" class="form-control" />
                                 <label class="form-label" for="form5Example21">E-mail adress</label>
                             </div>
                         </div>
@@ -208,8 +208,8 @@
 
     <!--ADD NEW MAIL TO LIST-->
     <script>
-        function newmail(mailadress) {
-            const data = mailadress;
+        function newmail() {
+            const data = document.getElementById('form5Example21').value;
 
             fetch('http://193.10.202.76/MailAPI/api/MailList/addMail', {
                 method: 'POST', // or 'PUT'
@@ -223,7 +223,7 @@
                     console.log('Success:', data);
                 })
                 .catch((error) => {
-                    console.error('Error:', error);
+                    console.error('Errormess:', error);
                 });
         }
     </script>
