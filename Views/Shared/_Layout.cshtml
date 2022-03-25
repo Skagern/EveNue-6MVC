@@ -3,9 +3,11 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Evenue </title>
+    <title>@ViewData["Title"] - test_design </title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/stylesheet.css" />
+
+    <link rel="stylesheet" href="http://193.10.202.74/css/stylesheet.css" />
+    @*<link rel="stylesheet" href="~/css/stylesheet.css" />*@
     <link href="~/css/ButtonDesign.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
@@ -13,16 +15,18 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm fixed-top">
+        <nav class="navbar navbar-expand-sm" id="first-nav">
             <div class="container">
-                <img class="navbar-brand" src="~/bilder/Evenue101.png" asp-controller="Home" asp-action="Index" />
+                <a href="http://193.10.202.72/startsida"><img class="navbar-brand" src="~/bilder/Evenue101.png" /></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse">
                     <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
-                        
+                        @*<li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Om oss</a>
+                        </li>*@
                         @*<li class="nav-item">
                                 <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Logga in</a>
                             </li>*@
@@ -31,7 +35,53 @@
                 </div>
             </div>
         </nav>
+
     </header>
+    <nav class="navbar navbar-expand-sm navbar-dark" id="second-nav">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="http://193.10.202.71/GroupOne_WebClient" id="navbarMenuLink">
+                            Webbshop
+                        </a>
+                    </li>
+                   
+
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="https://193.10.202.72/LocalMVC/" id="navbarMenuLink">
+                            Lokaler
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="http://193.10.202.73/HostClient/" id="navbarMenuLink">
+                            Arrangör
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="http://193.10.202.74/EventMVC/Event" id="navbarMenuLink">
+                            Alla Event
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link  px-3" href="http://193.10.202.75/EmployeeMVC/Home/Loggain/?ReturnUrl=%2FEmployeeMVC%2FEmployees" id="navbarMenuLink">
+                            Personal
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="http://193.10.202.76/GruppgitMVC/" id="navbarMenuLink">
+                            Sponsorer
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
@@ -89,16 +139,17 @@
                         <!--Grid column-->
                         <div class="col-md-5 col-12">
                             <!-- Email input -->
-                            <div class="form-outline form-white mb-4">                                                                      
+                            <div class="form-outline form-white mb-4">
                                 <input type="email" name="form5Example21" id="form5Example21" class="form-control" />                   <!--NEW EMAIL-->
-                                <label class="form-label" for="form5Example21">E-mail adress</label>                                
+                                <label class="form-label" for="form5Example21">E-mail adress</label>
                             </div>
                         </div>
                         <!--Grid column-->
                         <!--Grid column-->
                         <div class="col-auto">
                             <!-- Submit button -->
-                            <button onclick="newmail(document.getElementById('form5Example21'))" class="btn btn-outline-light mb-4">    <!--NEW EMAIL-->
+                            <button onclick="newmail(document.getElementById('form5Example21'))" class="btn btn-outline-light mb-4">
+                                <!--NEW EMAIL-->
                                 Prenumerera
                             </button>
                         </div>
@@ -109,23 +160,18 @@
             </section>
             <!-- Section: Form -->
             <!-- Section: Text -->
-            
             <!-- Section: Text -->
             <!-- Section: Links -->
             <section class="">
                 <!--Grid row-->
                 <div class="row">
                     <!--Grid column-->
-                    
                     <!--Grid column-->
                     <!--Grid column-->
-                   
                     <!--Grid column-->
                     <!--Grid column-->
-                  
                     <!--Grid column-->
                     <!--Grid column-->
-                    
                     <!--Grid column-->
                 </div>
                 <!--Grid row-->
@@ -166,7 +212,7 @@
                 });
         }
     </script>
-    
+
 
 
 
